@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wompi Chat UI
 
-## Getting Started
+Interfaz de chat web para interactuar con el asistente virtual de Wompi.
 
-First, run the development server:
+## Características
+
+- 💬 **Chat en tiempo real** con el asistente de Wompi
+- 🎨 **Interfaz moderna** construida con Next.js y Tailwind CSS
+- 📱 **Responsive design** que funciona en desktop y móvil  
+- 🔍 **Visualización de fuentes** muestra de dónde viene la información
+- ⚡ **Conexión en vivo** con indicador de estado del backend
+- 🎯 **Experiencia optimizada** con auto-scroll y loading states
+
+## Requisitos
+
+- Node.js 18+ 
+- Backend RAG ejecutándose en puerto 3000
+
+## Instalación
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Desde el directorio wompi-chat-ui
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Configuración
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Copia el archivo de configuración
+cp .env.example .env.local
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Edita .env.local si el backend está en otra URL
+```
 
-## Learn More
+## Uso
 
-To learn more about Next.js, take a look at the following resources:
+### Desarrollo
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+La aplicación estará disponible en: http://localhost:3001
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Producción
+```bash
+npm run build
+npm start
+```
 
-## Deploy on Vercel
+## Arquitectura
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+wompi-chat-ui/
+├── src/
+│   ├── app/                 # App Router de Next.js
+│   │   ├── layout.tsx      # Layout principal
+│   │   └── page.tsx        # Página principal
+│   └── components/
+│       └── ChatInterface.tsx  # Componente principal del chat
+├── .env.local              # Variables de entorno
+└── package.json
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Funcionalidades
+
+### Chat Interface
+- Envío de mensajes con Enter
+- Indicador de "escribiendo..."
+- Historial de conversación
+- Timestamp en mensajes
+
+### Fuentes de información
+- Muestra documentos consultados
+- Score de similitud
+- Metadatos de la fuente
+
+### Estado de conexión
+- ✅ Conectado - Backend disponible
+- 🟡 Conectando - Verificando conexión  
+- ❌ Error - Backend no disponible
+
+## Variables de entorno
+
+- `NEXT_PUBLIC_API_URL` - URL del backend RAG (default: http://localhost:3000/api/v1)
+
+## Stack tecnológico
+
+- **Framework**: Next.js 15 con App Router
+- **Styling**: Tailwind CSS 4
+- **Icons**: Lucide React
+- **Language**: TypeScript
+- **Deployment**: Listo para Vercel
+
+## Integración con Backend
+
+La interfaz se conecta automáticamente con el backend RAG mediante:
+
+- `GET /health` - Verificar estado de conexión
+- `POST /chat` - Enviar mensajes y recibir respuestas con fuentes
+
+## Desarrollo
+
+```bash
+# Instalar dependencias
+npm install
+
+# Ejecutar en desarrollo
+npm run dev
+
+# Linting
+npm run lint
+
+# Build para producción
+npm run build
+```
+
+## Deployment
+
+La aplicación está lista para desplegarse en cualquier plataforma que soporte Next.js:
+
+- **Vercel** (recomendado)
+- **Netlify** 
+- **Docker**
+- **Servidor Node.js**
