@@ -51,7 +51,7 @@ export default function ChatInterface() {
     {
       id: "1",
       content:
-        "¡Hola! Soy el asistente virtual de Wompi. ¿En qué puedo ayudarte hoy?",
+        "¡Hola! Soy el asistente todo poderoso virtual de Wompi. ¿En qué puedo ayudarte hoy?",
       sender: "bot",
       timestamp: new Date(),
     },
