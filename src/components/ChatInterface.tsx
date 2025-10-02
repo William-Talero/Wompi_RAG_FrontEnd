@@ -13,6 +13,10 @@ import {
 } from "lucide-react";
 import SuggestedQuestions from "./SuggestedQuestions";
 
+
+const privateKey = "Jhd34bjbceu745mc944";
+
+
 const formatTime = (date: Date) => {
   return date.toLocaleTimeString("es-ES", {
     hour: "2-digit",
